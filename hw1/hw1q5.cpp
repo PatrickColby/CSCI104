@@ -31,7 +31,7 @@ int main(int argc, const char * argv[]) {
 
             for (int i = 0; i < num_buckets; i++) {	//To initialize all of the buckets.
             	delete buckets[i];
-            	buckets[i] = nullptr;
+            	buckets[i] = NULL;
             }
 
             for(int i = 0; i < num_commands; i++) { //To iterate through each line individually.
@@ -52,7 +52,7 @@ int main(int argc, const char * argv[]) {
 
             	if(ssin.good() && command == "PUT") {	//If we have info to read AND our command is PUT.
 
-            		if(buckets[target_bucket - 1] == nullptr) { //check to see if bucket is full. If nullptr --> bucket is empty.
+            		if(buckets[target_bucket - 1] == NULL) { //check to see if bucket is full. If NULL --> bucket is empty.
             			ssin >> num_items;
             			bucket_sizes[target_bucket - 1] = num_items;	//The number of buckets (e.g., 3) would be 1, 2, 3 (and not 0, 1, 2)
 	            		buckets[target_bucket - 1] = new int[num_items]; //instantiate an array in this bucket's spot in the array of size num_items.
@@ -67,7 +67,7 @@ int main(int argc, const char * argv[]) {
             	}
             	else if(command == "OUTPUT") {
             		if(target_bucket > 0 && target_bucket <= num_buckets) {
-            			if(buckets[target_bucket - 1] == nullptr) {	//Target bucket is empty.
+            			if(buckets[target_bucket - 1] == NULL) {	//Target bucket is empty.
             				cout << "empty" << endl;
             			}
             			else {	//Target bucket is not empty.
@@ -83,9 +83,9 @@ int main(int argc, const char * argv[]) {
             	}
 
             	else if(command == "EMPTY") {
-            		if(buckets[target_bucket - 1] != nullptr) { //Target bucket isn't empty.
+            		if(buckets[target_bucket - 1] != NULL) { //Target bucket isn't empty.
             			delete buckets[target_bucket - 1];
-            			buckets[target_bucket - 1] = nullptr;
+            			buckets[target_bucket - 1] = NULL;
             		}
             	}
             }
